@@ -4,6 +4,7 @@ package com.soft.train.java.config.reflection;
 public class Application {
 
     @Property(key = "app.name")
+    @ValidateString(start = "test")
     private String name;
     @Property(key = "app.test.count")
     private int    testCount;

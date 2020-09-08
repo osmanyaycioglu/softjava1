@@ -11,5 +11,13 @@ public class ConfigRun {
         System.out.println(applicationLoc);
         engineLoc.process(confLoc);
         System.out.println(confLoc);
+        ValidationEngine validationEngineLoc = new ValidationEngine();
+        try {
+            validationEngineLoc.process(applicationLoc);
+        } catch (Exception eLoc) {
+            eLoc.printStackTrace();
+        }
+
+
     }
 }
