@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/first")
 public class MyFirstRest {
 
+
     @GetMapping("/hello/{xyz}/{abc}")
     public String hello(@PathVariable("xyz") final String name,
                         @PathVariable("abc") final String surname) {

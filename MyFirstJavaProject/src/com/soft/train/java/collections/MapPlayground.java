@@ -1,15 +1,18 @@
 package com.soft.train.java.collections;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MapPlayground {
 
     public static void main(final String[] args) {
-        Map<String, MyCollectionObj> mapLoc = new HashMap<>();
+        // Map<String, MyCollectionObj> mapLoc = new HashMap<>();
+        Map<String, MyCollectionObj> mapLoc = new ConcurrentHashMap<>(1_000_000,
+                                                                      0.9F,
+                                                                      1_000);
         mapLoc.put("osman1",
                    new MyCollectionObj("abc",
                                        100));
