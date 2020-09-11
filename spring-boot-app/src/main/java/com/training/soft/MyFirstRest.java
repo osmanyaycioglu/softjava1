@@ -2,6 +2,7 @@ package com.training.soft;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
@@ -17,10 +18,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.training.soft.jpa.Customer;
+import com.training.soft.jpa.CustomerDao;
+import com.training.soft.jpa.Info;
+
 @RestController
 @RequestMapping("/first")
 public class MyFirstRest {
 
+    @Autowired
+    private CustomerDao cd;
+
+    @PostMapping("/customer/insert")
+    public String writeCustomer(@RequestBody final Customer customer) {
+        Info cinfoLoc = customer.getCinfo();
+        cinfoLoc.setCustomer(customer);
+        this.cd.save(customer);
+        return "OK";
+    }
 
     @GetMapping("/hello/{xyz}/{abc}")
     public String hello(@PathVariable("xyz") final String name,
